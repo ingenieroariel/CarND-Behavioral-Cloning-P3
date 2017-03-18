@@ -65,7 +65,7 @@ def get_data(filename='drive.log', clean_data=True):
         samples = filter_samples(samples)
 
     # split data train and validation
-    training, validaton = train_test_split(samples, test_size=0.2)
+    training, validation = train_test_split(samples, test_size=0.2)
 
     return training, validation
 
@@ -83,8 +83,7 @@ def train_model(model, training=None, validation=None,
     model.fit_generator(train_generator, samples_per_epoch=samples_epoch_train,
                         validation_data=validation_generator,
                         nb_val_samples=samples_epoch_val,
-                        callbacks=callbacks_list, nb_epoch=epochs)
-    model.save(model_path)
+                        callbacks=callback, nb_epoch=epochs)
     return model
 
 
@@ -113,12 +112,12 @@ def filter_samples(list_im_angles, num_max_per_bin=1200):
 def generator_batch_images(list_images, batch_size=4):
     """Takes an image list and returns images loaded as a batch.
     """
-    num_samples = len(samples)
+    num_samples = len(list_images)
     while 1: # Loop forever so the generator never terminates
-        random.shuffle(samples)
+        random.shuffle(list_images)
         offset_angle = 0.23
         for offset in range(0, int(np.floor(num_samples/batch_size)), batch_size):
-            batch_samples = samples[offset:offset+batch_size]
+            batch_samples = list_images[offset:offset+batch_size]
 
             images = []
             angles = []
