@@ -10,7 +10,7 @@ The goals / steps of this project are the following:
 
 [image3]: ./sample_images/sample_center.jpg "Driving on center"
 [image4]: ./sample_images/sample_close_left.jpg "Recovering from left"
-[image5]: ./sample_images/sample_close_right.jpg" "Recovering from right"
+[image5]: ./sample_images/sample_close_right.jpg "Recovering from right"
 [image6]: ./sample_images/normal.png "Normal Image"
 [image7]: ./sample_images/mirrored.png "Flipped Image"
 
